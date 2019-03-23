@@ -18,7 +18,13 @@ app.post('/sendmessage',function(req,res){
     var message=req.message;
     var room=req.room;
     console.log(id,message,room);
-    res.end("thanks bro");
+    res.end({
+        id:id,
+        message:room,
+        room:room
+    });
   });
+
+
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
