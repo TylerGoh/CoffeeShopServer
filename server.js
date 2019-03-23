@@ -53,7 +53,7 @@ app.post('/register',function(req,res){
         trigger = true;
         }
     }
-    if(trigger = false)
+    if(trigger == false)
     {
     users.push({id:req.body.id,password:req.body.password,time:moment().tz("Singapore").format()})
     res.end("registration successfull")
