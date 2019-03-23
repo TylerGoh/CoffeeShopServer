@@ -44,13 +44,20 @@ app.post('/sendmessage',function(req,res){
   });
 
 app.post('/register',function(req,res){
-    for(key in users.id)
+    var trigger = false;
+    for(key in users)
     {
-        if(users[key].id = req.body.id)
+        if(users[key].id == req.body.id)
+        {
         res.end("id taken")
+        trigger = true;
+        }
     }
+    if(trigger = false)
+    {
     users.push({id:req.body.id,password:req.body.password,time:moment().tz("Singapore").format()})
     res.end("registration successfull")
+    }
 });
 
 app.post('/requestmessage',function(req,res){
