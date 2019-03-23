@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 var moment = require('moment-timezone');
 var cors = require('cors')
-const port = 1337
+const port = 80
 
 
 
@@ -14,9 +14,9 @@ app.use(cors())
 app.get('/', (req, res) => res.send('Hello World!'))
 
 app.post('/sendmessage',function(req,res){
-    var id=req.id;
-    var message=req.message;
-    var room=req.room;
+    var id=req.body.id;
+    var message=req.body.message;
+    var room=req.body.room;
     console.log(id,message,room);
     var json = JSON.stringify({
         id:id,
