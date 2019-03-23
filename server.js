@@ -18,11 +18,12 @@ app.post('/sendmessage',function(req,res){
     var message=req.message;
     var room=req.room;
     console.log(id,message,room);
-    res.end({
+    var json = JSON.stringify({
         id:id,
         message:room,
         room:room
-    });
+    })
+    res.end(json);
   });
 
 
