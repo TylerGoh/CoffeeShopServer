@@ -74,7 +74,11 @@ app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
 setInterval(() => {
     let data = JSON.stringify(users);
-    fs.writeFile('users.json',data)
+    fs.writeFile('users.json',data,function(err,data){
+        if(err) console.log('error',err);
+    })
     data = JSON.stringify(rooms);
-    fs.writeFile('rooms.json',data)
+    fs.writeFile('rooms.json',data,function(err,data){
+        if(err) console.log('error',err);
+    })
 }, 10000);
