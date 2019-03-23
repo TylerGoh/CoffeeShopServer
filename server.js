@@ -70,7 +70,7 @@ app.post('/requestmessage',function(req,res){
     }
     for(i in rooms)
     {
-        if(rooms[i].room==req.body.room && rooms[i].time>time)
+        if(rooms[i].room==req.body.room && rooms[i].time>users[sender].time)
         package.push({id:rooms[i].id,messsage:rooms[i].message})
     }
     users[sender].time = moment().tz("Singapore").format(); 
