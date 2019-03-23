@@ -1,3 +1,4 @@
+var fs = require('fs');
 const express = require('express')
 const app = express()
 var moment = require('moment-timezone');
@@ -5,6 +6,9 @@ var cors = require('cors')
 const port = 80
 
 
+fs.exists('newfile.json', 'Learn Node FS module', function (err) {
+    console.log('File is created successfully.');
+  }); 
 
 var d = moment().tz("Singapore").format();
 console.log(d)  
