@@ -68,10 +68,10 @@ app.post('/requestmessage',function(req,res){
         var time = users[i].time;
         var sender = i;
     }
-    for(i in rooms)
+    for(g in rooms)
     {
-        if(rooms[i].room==req.body.room && rooms[i].time>users[sender].time)
-        package.push({id:rooms[i].id,messsage:rooms[i].message})
+        if(rooms[g].room==req.body.room && rooms[g].time>time)
+        package.push({id:rooms[g].id,messsage:rooms[g].message})
     }
     users[sender].time = moment().tz("Singapore").format(); 
     res.end(JSON.stringify(package));
