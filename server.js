@@ -84,11 +84,14 @@ app.post('/register',function(req,res){
 
 app.post('/requestmessage',function(req,res){
     let package = []
-    var sender;
+    var time;
     for(i in users)
     {
         if(users[i].id==req.body.id)
+        {
+        time = users[i].time;
         users[i].time = moment().tz("Singapore").format(); 
+        }
     }
     for(g in rooms)
     {
