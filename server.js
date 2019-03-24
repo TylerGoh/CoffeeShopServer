@@ -37,11 +37,33 @@ app.use(cors())
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
+app.post('/login',function(req,res){
+    let temp = "wrong username"
+    let body = req.body
+    for (i in users)
+    {
+        if (users[i].id == body.id)
+        {
+            if(users[i].password==body.password)
+            temp = "success"
+            else
+            temp = "wrong password"
+        }
+    }
+    res.end(temp)
+    
+})
+
 app.post('/sendmessage',function(req,res){
-    rooms.push({id:req.body.id,message:req.body.message,room:req.body.room,time:moment().tz("Singapore").format()})
+    let body = req.body;
+    rooms.push({id:body.id,
+                message:body.message,
+                room:body.room,
+                time:moment().tz("Singapore").format()})
     console.log(users)
     res.end("message received");
   });
+
 
 app.post('/register',function(req,res){
     var trigger = false;
