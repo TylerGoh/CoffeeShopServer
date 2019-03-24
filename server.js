@@ -93,7 +93,7 @@ app.post('/requestmessage',function(req,res){
     for(g in rooms)
     {
         if(rooms[g].room==req.body.room && moment(rooms[g].time).isAfter(time))
-        package.push({id:rooms[g].id,messsage:rooms[g].message})
+        package.push({id:rooms[g].id,message:rooms[g].message})
     }
     users[sender].time = moment().tz("Singapore").format(); 
     res.end(JSON.stringify(package));
