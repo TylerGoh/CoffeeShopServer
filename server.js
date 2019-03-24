@@ -84,18 +84,17 @@ app.post('/register',function(req,res){
 
 app.post('/requestmessage',function(req,res){
     let package = []
+    var sender;
     for(i in users)
     {
         if(users[i].id==req.body.id)
-        var time = users[i].time;
-        var sender = i;
+        users[i].time = moment().tz("Singapore").format(); 
     }
     for(g in rooms)
     {
         if(rooms[g].room==req.body.room && moment(rooms[g].time).isAfter(time))
         package.push({id:rooms[g].id,message:rooms[g].message})
     }
-    users[sender].time = moment().tz("Singapore").format(); 
     res.end(JSON.stringify(package));
 })
 
