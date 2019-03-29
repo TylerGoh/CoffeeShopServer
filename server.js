@@ -13,7 +13,7 @@ const accountSchema = mongoose.Schema({
 
 const Account = mongoose.model('Account', accountSchema);
 
-var test = new Product({
+var test = new Account({
     _id: new mongoose.Types.ObjectId(),
     name: "test",
     password: "pass"
