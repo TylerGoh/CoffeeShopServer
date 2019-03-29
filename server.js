@@ -23,6 +23,8 @@ test.save().then(result => {
     console.log(result);
 })
 
+Account.find({name:'test'}).then(console.log(doc))
+
 mongoose.connect(url, {useNewUrlParser: true});
 
 
