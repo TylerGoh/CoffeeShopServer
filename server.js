@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const serv = require('http').Server(app);
 const mongoose = require('mongoose');
+var bodyParser = require('body-parser')
 const cors = require('cors')
 const url = `mongodb://tyler:tyler@127.0.0.1:27017/coffeeshop?authSource=admin`;
 const io = require('socket.io')(serv, {});
@@ -11,9 +12,21 @@ const io = require('socket.io')(serv, {});
 mongoose.connect(url, {useNewUrlParser: true});
 serv.listen(80);
 app.use(cors());
+app.use(bodyParser.json())
 console.log("Server started.");
 
-
+app.post('/register', (req, response) => {
+    data = req.body;
+    isUsernameTaken(data, function (res) {
+    if (res) {
+        res.end('username taken')
+    } else {
+        addUser(data, function () {
+        res.end('register successful')
+        });
+    }
+    });
+})
 
 var isValidPassword = function (data, cb) {
     Account.find({ name:data.name, password:data.password }).then(doc => {
@@ -38,6 +51,7 @@ var addUser = function (data, cb) {
         name: data.name,
         password: data.password,
     })
+    console.log("new account added")
 };
 
 
