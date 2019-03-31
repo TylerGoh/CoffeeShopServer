@@ -17,12 +17,12 @@ console.log("Server started.");
 
 app.post('/register', (req, response) => {
     data = req.body;
-    isUsernameTaken(data, function (res) {
+    isUsernameTaken(data, function (res) {;
     if (res) {
         response.send('username taken')
     } else {
         addUser(data, function () {
-        response.send('register successful')
+        response.send('register successful');
         });
     }
     });
@@ -52,6 +52,7 @@ var addUser = function (data, cb) {
         password: data.password,
     })
     console.log("new account added")
+    cb()
 };
 
 
