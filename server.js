@@ -38,7 +38,7 @@ var isValidPassword = function (data, cb) {
 
 
 var isUsernameTaken = function (data, cb) {
-    Account.find({ username: data.username }).then(doc => {
+    Account.find({ name: data.name }).then(doc => {
         if (doc.length > 0)
             cb(true);
         else
