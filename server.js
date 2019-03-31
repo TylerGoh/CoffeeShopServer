@@ -47,12 +47,11 @@ var isUsernameTaken = function (data, cb) {
 };
 
 var addUser = function (data, cb) {
-    console.log(data.name,data.password)
     new Account({
         _id: new mongoose.Types.ObjectId(),
         name: data.name,
         password: data.password
-    })
+    }).save();
     console.log("new account added")
     cb()
 };
