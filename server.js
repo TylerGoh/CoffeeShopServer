@@ -45,7 +45,8 @@ SOCKET_LIST = {};
 
 io.sockets.on('connection', function (socket) {
     socket.id = Math.random();
-    SOCKET_LIST[socket.id] = socket;
+    SOCKET_LIST[socket.id] = socket; 
+    console.log(socket.id)
 
     socket.on('signIn', function (data) {
         isValidPassword(data, function (res) {
