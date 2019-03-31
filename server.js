@@ -17,6 +17,7 @@ console.log("Server started.");
 
 app.post('/register', (req, response) => {
     data = req.body;
+    console.log(data)
     isUsernameTaken(data, function (res) {;
     if (res) {
         response.send('username taken')
