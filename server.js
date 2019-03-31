@@ -17,7 +17,6 @@ console.log("Server started.");
 
 app.post('/register', (req, response) => {
     data = req.body;
-    console.log(data)
     isUsernameTaken(data, function (res) {;
     if (res) {
         response.send('username taken')
@@ -28,6 +27,21 @@ app.post('/register', (req, response) => {
     }
     });
 })
+
+app.post('/login', (req, response) => {
+    data = req.body;
+    isValidPassword(data, function (res) {
+        if (res) {
+            console.log("Sign in from " + data.name);
+            response.send('success')
+        } else {
+            response.send('failure');
+        }
+    });
+})
+
+
+
 
 var isValidPassword = function (data, cb) {
     Account.find({ name:data.name, password:data.password }).then(doc => {
@@ -107,15 +121,5 @@ const messageSchema = mongoose.Schema({
     message: String,
     room: String
 })
+
 const Account = mongoose.model('Account', accountSchema);
-
-var test = new Account({
-    _id: new mongoose.Types.ObjectId(),
-    name: "test",
-    password: "pass"
-})
-
-test.save().then(result => {
-    console.log(result);
-})
-
