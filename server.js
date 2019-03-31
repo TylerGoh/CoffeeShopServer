@@ -19,10 +19,10 @@ app.post('/register', (req, response) => {
     data = req.body;
     isUsernameTaken(data, function (res) {
     if (res) {
-        response.end('username taken')
+        response.send('username taken')
     } else {
         addUser(data, function () {
-        response.end('register successful')
+        response.send('register successful')
         });
     }
     });
