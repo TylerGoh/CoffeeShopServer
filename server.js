@@ -44,6 +44,7 @@ app.post('/login', (req, response) => {
 
 
 var isValidPassword = function (data, cb) {
+    console.log(data);
     Account.find({ name:data.name, password:data.password }).then(doc => {
         console.log(doc)
         if (doc.length > 0)
